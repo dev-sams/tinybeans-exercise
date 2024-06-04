@@ -1,11 +1,4 @@
 # Tinybeans Evaluation
-
-**Congratulations on making it to the next round!** 
-
-
-Download the contents of this repo, and complete the assignment according to the details below. 
-Once complete, upload publicly to your Git provider of choice (Github/Gitlab/Bitbucket) and share the repository link with the tinybeans team.
-
 NOTE: If you are on windows, make sure to clone the repo using `git clone git@github.com:tinybeanskids/tinybeans-backend-project.git --config core.autocrlf=input` to avoid issues starting up
 
 
@@ -28,71 +21,49 @@ and if opting to use react you can verify its up and running by going to `http:/
 Both projects have `hot reload` capability, saving and/or recompiling a class will cause the docker project to reload
 
 
-## Assignment
+## Solution
 
-This repository is already setup using the following technologies:
+This repository is setup using the following technologies:
 
 - Spring boot
-- MySQL 5.x
+- MySQL 5.7
 - Java 11
 
+## Project Structure
 
-You’ll be making a web app with three screens: 
+### Backend
 
-![Overview](docs/img/overview.png)
+- Spring Boot Application: Handles backend logic, including product listing, checkout, and order processing. 
+- MySQL Database: Stores product and order data.
+- Application Runners: For Initializing database.
 
+### Frontend
 
-The requirements are
+- React: Provides the user interface for listing products, checking out, and displaying order confirmation.
 
-1. As a customer I want to see a list of products. 
-2. As a customer I want to select a product to purchase. 
-3. As a customer I want to pay for the product with my credit card. 
-4. As a customer I want to see confirmation that I’ve paid for the product.
+### Backend Endpoints
 
+- 'GET /items': Returns a list of products.
+- 'POST /orders': Processes a checkout request For order and payment
 
-#### Product screen 
+### Frontend Routes
 
-![Products](docs/img/products.png)
+- '/': Product listing screen.
+- '/cart': Product listing screen For Items in Cart.
+- '/payment/success': Order success screen.
+- '/payment/cancel': Order cancel screen.
 
-A model object for products has already been created for you in `com.tinybeans...data.entity.Item` 
-You should populate this table using some test data, via the flyway integration or any other method you're comfortable with.
-See [this link](https://medium.com/@jonashavers/how-to-create-database-test-data-for-spring-boot-applications-with-flyway-db-294a436db7ee) for inspiration
+## Screens
 
-When the user clicks on a product it should take him to the checkout screen
+### Product Screen
 
-#### Checkout screen 
+Displays a list of products available for purchase. Users can click on a product to add it to their cart and proceed to checkout.
 
-![Checkout](docs/img/checkout.png)
+### Cart Screen
 
-When a user selects a product, that will get added to their cart, and the user can then place their order on this screen when ready to check out.
+Shows the selected product and allows users to the purchase.
 
-For this you can use a payment platform of your choice. Some popular options are
-1. Stripe
-2. Square
-3. Google/Apple pay
+### Success Screen
 
-Whichever you choose, make sure to include relevant api keys needed to checking out possible when you submit your work.
-
-
-#### Success screen 
-
-![Success](docs/img/success.png)
-
-Once checkout has completed, an order is successfully placed we should save the details so we can review later. A model object for an order has already been created for you in `com.tinybeans...data.entity.Order`
-
-The success screen should contain the Order ID and any reference to the payment made through the provider you chose in the checkout screen.
-
-
-## Criteria for success
-
-- Core backend complete
-- Basic "frontend" complete with the screens above. Can be created in any way you're most comfortable ( JSP/JSF/Thymeleaf/React/etc )
-- An updated README with any relevant details of your implementation needed to run it
-
-Optional but major Bonus points
-- A few unit/integration tests
-- More polished code/UI
-
-
-
+Displays a confirmation message with the Order ID and payment reference after a successful transaction.
 
